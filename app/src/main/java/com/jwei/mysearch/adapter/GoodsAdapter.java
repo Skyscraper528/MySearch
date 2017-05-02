@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.adapter;
 
 /**
  * Created by Administrator on 2016/12/19.
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.jwei.mysearch.item.Goods;
 
 import java.util.List;
 

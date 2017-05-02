@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.item;
 
 /**
  * Created by Administrator on 2017/3/28.

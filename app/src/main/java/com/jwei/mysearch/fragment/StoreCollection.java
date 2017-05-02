@@ -1,9 +1,8 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.fragment;
 
 import android.content.Context;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.jwei.mysearch.R;
+import com.jwei.mysearch.item.Store;
 
 import java.util.Vector;
 

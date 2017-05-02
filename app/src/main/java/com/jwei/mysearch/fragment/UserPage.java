@@ -1,18 +1,11 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.fragment;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +16,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.io.File;
+import com.jwei.mysearch.CollectionPage;
+import com.jwei.mysearch.R;
+import com.jwei.mysearch.activity_about_page;
+import com.jwei.mysearch.activity_footprint_page;
+import com.jwei.mysearch.activity_profile_page;
+import com.jwei.mysearch.activity_setting_page;
+import com.jwei.mysearch.activity_share_page;
+import com.jwei.mysearch.item.Set;
 import java.util.Vector;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by Administrator on 2017/3/15.

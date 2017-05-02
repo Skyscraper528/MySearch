@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.overlay;
 
 import android.os.Bundle;
 

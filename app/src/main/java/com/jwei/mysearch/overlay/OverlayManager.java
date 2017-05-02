@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.overlay;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BaiduMap.OnPolylineClickListener;
@@ -31,7 +31,7 @@ public abstract class OverlayManager implements OnMarkerClickListener, OnPolylin
     BaiduMap mBaiduMap = null;
     private List<OverlayOptions> mOverlayOptionList = null;
 
-    List<Overlay> mOverlayList = null;
+    public List<Overlay> mOverlayList = null;
 
     /**
      * 通过一个BaiduMap 对象构造

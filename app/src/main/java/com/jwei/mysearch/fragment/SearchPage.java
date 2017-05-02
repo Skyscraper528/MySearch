@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.fragment;
 
 
 
@@ -18,6 +18,11 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.jwei.mysearch.Mapview;
+import com.jwei.mysearch.R;
+import com.jwei.mysearch.activity_login_page;
+import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
 

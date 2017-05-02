@@ -1,13 +1,13 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.item;
 
 /**
  * Created by Administrator on 2017/3/29.
  */
 
 public class FootprintTime {
-    String time;
+    public String time;
 
-    FootprintTime(String time){
+    public FootprintTime(String time){
         this.time = time;
     }
 

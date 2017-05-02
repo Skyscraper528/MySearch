@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.item;
 
 /**
  * Created by Administrator on 2016/12/19.
@@ -12,16 +12,16 @@ public class Goods {
     public String Distance;
     public int Goods_imageid;
 
-    Goods(){}
+    public Goods(){}
 
-    Goods(String Goods_name,String Store_name,String Price,int Goods_imageid){
+    public Goods(String Goods_name,String Store_name,String Price,int Goods_imageid){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Price = Price;
         this.Goods_imageid = Goods_imageid;
     }
 
-    Goods(String Goods_name,String Store_name,String Distance,String Price,int Goods_imageid){
+    public Goods(String Goods_name,String Store_name,String Distance,String Price,int Goods_imageid){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Distance = Distance;

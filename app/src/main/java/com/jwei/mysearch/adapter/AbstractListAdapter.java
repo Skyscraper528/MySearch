@@ -1,4 +1,4 @@
-package com.jwei.mysearch;
+package com.jwei.mysearch.adapter;
 
 import android.app.Activity;
 import android.content.Context;

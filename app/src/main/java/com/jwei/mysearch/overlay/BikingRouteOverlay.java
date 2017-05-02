@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2016 Baidu, Inc. All Rights Reserved.
  */
-package com.jwei.mysearch;
+package com.jwei.mysearch.overlay;
 
 import android.graphics.Color;
 import android.os.Bundle;
