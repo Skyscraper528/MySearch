@@ -46,8 +46,11 @@ public class UserPage extends Fragment {
     private ImageView personal_icon;
     private ImageView toSetting;
     private Bitmap icon;
+    private TextView Username;
+    private String uname;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.activity_user_page, container,false);
 
         collect_goods = (Button) view.findViewById(R.id.collect_goods);
@@ -58,6 +61,8 @@ public class UserPage extends Fragment {
                 startActivity(intent);
             }
         });
+        Username=(TextView) view.findViewById(R.id.username);
+        Username.setText(uname);
 
         iv_personal_icon = (ImageView) view.findViewById(R.id.iv_personal_icon);
         iv_personal_icon.setOnClickListener(new View.OnClickListener() {

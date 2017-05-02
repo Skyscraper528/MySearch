@@ -10,6 +10,34 @@ public class MyUser extends BmobUser {
     private Boolean sex;
     private String nick;
     private Integer age;
+    private String tel;
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getEmailaddr() {
+        return Emailaddr;
+    }
+
+    public void setEmailaddr(String emailaddr) {
+        Emailaddr = emailaddr;
+    }
+
+    public String getSlefintroduce() {
+        return slefintroduce;
+    }
+
+    public void setSlefintroduce(String slefintroduce) {
+        this.slefintroduce = slefintroduce;
+    }
+
+    private String Emailaddr;
+    private String slefintroduce;
 //    private String Country;
 
     public boolean getSex() {

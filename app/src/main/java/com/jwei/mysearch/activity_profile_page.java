@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,14 +20,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.jwei.mysearch.R;
 import com.jwei.mysearch.item.Profile;
 import com.jwei.mysearch.other.RenderScriptGaussianBlur;
 import com.jwei.mysearch.other.Utils;
 
 import java.io.File;
 import java.util.Vector;
+
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UploadFileListener;
 
 public class activity_profile_page extends AppCompatActivity{
     ListView listView1,listView2,listView3;
@@ -132,6 +136,16 @@ public class activity_profile_page extends AppCompatActivity{
                         openAlbumIntent.setType("image/*");
                         tempUri = Uri.fromFile(new File(Environment
                                 .getExternalStorageDirectory(), "image.jpg"));
+                        String picPath=Environment.getExternalStorageDirectory()+"image.jpg";
+                        BmobFile bmobFile=new BmobFile(new File(picPath));
+                        bmobFile.uploadblock(new UploadFileListener() {
+                            @Override
+                            public void done(BmobException e) {
+                                if(e==null){
+                                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
                         startActivityForResult(openAlbumIntent, CHOOSE_PICTURE);
                         break;
                     case TAKE_PICTURE: // 拍照

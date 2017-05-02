@@ -83,6 +83,7 @@
         <activity android:name=".activity_register_page" />
         <activity android:name=".activity_nickname_set_page" />
         <activity android:name=".activity_validate_page" />
+        <activity android:name=".MainSearchPage"/>
         <activity android:name=".activity_profile_edit"></activity>
     </application>
 

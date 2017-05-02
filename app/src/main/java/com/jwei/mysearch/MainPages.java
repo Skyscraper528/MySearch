@@ -1,19 +1,14 @@
 package com.jwei.mysearch;
 
 
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.os.Build;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.jwei.mysearch.R;
 import com.jwei.mysearch.fragment.SearchPage;
 import com.jwei.mysearch.fragment.UserPage;
 
@@ -22,6 +17,7 @@ public class MainPages extends FragmentActivity implements View.OnClickListener{
     private Button tabSearch;
     //private TextView tabMore;
     private Button tabUser;
+    private String uname;
 
     private SearchPage searchPage;
     private UserPage userPage;
