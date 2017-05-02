@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.jwei.mysearch.R;
 
 public class activity_about_page extends AppCompatActivity {
@@ -28,6 +31,21 @@ public class activity_about_page extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.about_choice);
         myAdapter = new MyAdapter(this);
         listView.setAdapter(myAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView set = (TextView) view.findViewById(R.id.set_choice);
+                String s = (String) set.getText();
+                switch (s)
+                {
+                    case "版本更新":
+                        Toast.makeText(activity_about_page.this,"已是最新版本",Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+
         back = (Button) findViewById(R.id.about_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override

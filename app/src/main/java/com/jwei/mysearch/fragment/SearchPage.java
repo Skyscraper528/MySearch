@@ -38,10 +38,6 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
     public static final int loading=0x1;
     private int contentView;
     private Button to_mapview;
-    private Button place;
-
-
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,15 +48,6 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),Mapview.class);
-                startActivity(intent);
-            }
-        });
-
-        place = (Button) view.findViewById(R.id.place);
-        place.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),activity_login_page.class);
                 startActivity(intent);
             }
         });
