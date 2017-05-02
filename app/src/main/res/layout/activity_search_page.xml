@@ -15,31 +15,12 @@
         android:orientation="horizontal"
         android:background="#21b2fa"
         >
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:id="@+id/place"
-            android:drawableLeft="@mipmap/left"
-            android:foregroundGravity="center"
-            android:paddingLeft="8dp"/>
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:id="@+id/placetext"
-            android:layout_toRightOf="@id/place"
-            android:text="福州"
-            android:textColor="#ffffff"
-            android:textSize="15sp"
-            android:gravity="center|left"/>
         <EditText
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.60"
             android:layout_gravity="center"
-            android:layout_marginLeft="5sp"
+            android:layout_marginLeft="15sp"
             android:paddingLeft="5sp"
             android:drawableLeft="@mipmap/searchpageicon"
             android:background="@drawable/listview_bg1"
@@ -48,16 +29,25 @@
             android:textColorHint="#807979"
             android:textColor="#312d2d"
             android:textSize="15sp"/>
+
         <Button
-            android:layout_width="50sp"
+            android:layout_width="30sp"
             android:layout_height="40sp"
+            android:paddingLeft="5sp"
+            android:id="@+id/searchgoods"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@mipmap/searchgoods"
+            />
+
+        <Button
+            android:layout_width="35sp"
+            android:layout_height="40sp"
+            android:paddingLeft="5sp"
             android:id="@+id/searchtomap"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
-            android:layout_marginRight="5sp"
-            android:drawableTop="@mipmap/location2"
-            android:text="地图"
-            android:textSize="12sp"
+            android:drawableLeft="@mipmap/location2"
             />
     </LinearLayout>
 
