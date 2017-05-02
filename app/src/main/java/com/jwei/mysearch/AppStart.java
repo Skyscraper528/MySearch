@@ -8,7 +8,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 
 import com.ant.liao.GifView;
-import com.jwei.mysearch.R;
 
 /**
  * Created by Administrator on 2017/3/21.
@@ -38,7 +37,7 @@ public class AppStart extends Activity {
             public void onAnimationStart(Animation animation) {
             }
             private void redirectTo(){
-                Intent intent = new Intent(AppStart.this, MainPages.class);
+                Intent intent = new Intent(AppStart.this, activity_login_page.class);
                 startActivity(intent);
                 finish();
             }
