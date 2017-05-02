@@ -115,6 +115,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/Login1"
             android:layout_width="50sp"
             android:layout_height="match_parent"
             android:drawableLeft="@mipmap/login"
