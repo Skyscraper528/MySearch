@@ -23,7 +23,7 @@ public class MainSearchPage extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_main);
-        cancel1=(Button) findViewById(R.id.cancel);
+        cancel1=(Button) findViewById(R.id.cancel1);
         cancel1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

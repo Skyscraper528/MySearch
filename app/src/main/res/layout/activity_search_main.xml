@@ -12,21 +12,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/backcolor">
-
-        <SearchView
-            android:layout_width="320dp"
+        <Button
+            android:id="@+id/cancel1"
+            android:drawableRight="@mipmap/left"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:layout_width="283dp"
             android:layout_height="36dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/boder"
-            android:text="输入商品/商店"
+            android:background="@drawable/shape2"
+            android:hint="输入商品/商店"
             />
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/search1"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:background="@drawable/shape"
-            android:text="取消"/>
+            android:text="搜索"/>
     </LinearLayout>
 
     <LinearLayout
