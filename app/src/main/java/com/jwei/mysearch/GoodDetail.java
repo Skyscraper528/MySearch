@@ -2,6 +2,8 @@ package com.jwei.mysearch;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +18,7 @@ public class GoodDetail extends AppCompatActivity {
     private TextView storename;
     private TextView goodsname;
     private TextView goodsprice;
+    private ImageView goodsimage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -26,6 +29,7 @@ public class GoodDetail extends AppCompatActivity {
         goodsname = (TextView) findViewById(R.id.goods_name1);
         // distance_ = (TextView) findViewById(R.id.distance);
         goodsprice = (TextView) findViewById(R.id.goods_price1);
+        goodsimage = (ImageView) findViewById(R.id.goods_image1);
 
         //    得到跳转到该Activity的Intent对象
         Intent intent = this.getIntent();
@@ -33,7 +37,9 @@ public class GoodDetail extends AppCompatActivity {
         final String store_name = intent.getStringExtra("storename");
         //String distance = intent.getStringExtra("com.jwei.mysearch.GoodListPage.distance");
         String goods_price = intent.getStringExtra("goodsprice");
+        Bitmap goods_image=intent.getParcelableExtra("image");
 
+        goodsimage.setImageBitmap(goods_image);
         goodsname.setText(goods_name);
         storename.setText(store_name);
         goodsprice.setText(goods_price);

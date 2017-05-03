@@ -2,6 +2,9 @@ package com.jwei.mysearch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +25,6 @@ import android.widget.TextView;
 import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
-
-import static android.content.Intent.ACTION_EDIT;
 
 public class GoodsListPage extends AppCompatActivity implements AbsListView.OnScrollListener{
     ListView listView;
@@ -74,8 +75,13 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
                 String distance_ = (String) distance.getText();
                 TextView goodsprice = (TextView) view.findViewById(R.id.goods_price);
                 String goods_price = (String) goodsprice.getText();
+                ImageView pic = (ImageView) view.findViewById(R.id.imageview2);
+                Drawable image = pic.getDrawable();
+                BitmapDrawable bd = (BitmapDrawable) image;
+                Bitmap bitmap = bd.getBitmap();
 
                 Intent intent=new Intent(GoodsListPage.this,GoodDetail.class);
+                intent.putExtra("image", bitmap);
                 intent.putExtra("goodsname",goods_name);
                 intent.putExtra("storename",store_name);
                 //intent.putExtra("com.jwei.mysearch.GoodListPage.distance",distance_);

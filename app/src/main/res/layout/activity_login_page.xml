@@ -47,10 +47,10 @@
 
                 <TextView
                     android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingLeft="15sp"
+                    android:layout_marginLeft="15sp"
                     android:background="@android:color/transparent"
                     android:text="用户名"
                     android:textColor="#312d2d"
@@ -88,11 +88,13 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60sp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingLeft="15sp"
-                    android:text="  密码"
+                    android:gravity="center|left"
+                    android:layout_marginLeft="15sp"
+
+                    android:text="密码"
                     android:textColor="#312d2d"
                     android:textSize="16sp" />
 
@@ -106,7 +108,8 @@
                     android:ems="10"
                     android:text=""
                     android:textColor="#000000"
-                    android:textSize="15sp">
+                    android:textSize="15sp"
+                    android:inputType="textPassword">
                     <requestFocus />
                 </EditText>
 

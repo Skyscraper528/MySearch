@@ -9,24 +9,33 @@
               android:weightSum="1">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40sp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/stepback"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="10sp"
+            android:paddingTop="5sp"
+            android:paddingBottom="5sp"
+            android:layout_gravity="center"
             android:drawableLeft="@mipmap/back"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/shopname"/>
+            android:layout_weight="1.0"
+            android:layout_gravity="center"
+            android:gravity="center|left"
+            android:layout_marginLeft="5sp"
+            android:id="@+id/shopname"
+            android:textColor="#807979"
+            android:textSize="16sp"/>
     </LinearLayout>
     <View
     android:layout_width="match_parent"
     android:layout_height="0.3px"
     android:layout_marginLeft="10sp"
     android:layout_marginRight="10sp"
-    android:layout_marginTop="10sp"
     android:background="@android:color/darker_gray"
     />
     <LinearLayout

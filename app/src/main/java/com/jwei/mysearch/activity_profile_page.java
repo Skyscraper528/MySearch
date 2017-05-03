@@ -31,6 +31,7 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.Vector;
 
+import cn.bmob.v3.Bmob;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UploadFileListener;
@@ -54,10 +55,14 @@ public class activity_profile_page extends AppCompatActivity{
     protected static Uri tempUri;
     private ImageView iv_personal_icon;
     public Bitmap icon1;
+    MyUser user = new MyUser();
+    File tempFile;
+    File temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
         setContentView(R.layout.activity_profile_page);
         imageView = (ImageView) findViewById(R.id.profile_personal_icon_blur);
         iv_personal_icon = (ImageView) findViewById(R.id.profile_personal_icon);
@@ -209,28 +214,14 @@ public class activity_profile_page extends AppCompatActivity{
         //intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         intent.putExtra("noFaceDetection", "true");
         intent.putExtra("return-data",true);
-
-        File tempFile=new File("/sdcard/ll1x/"+ Calendar.getInstance().getTimeInMillis()+".jpg"); // 以时间秒为文件名
-        File temp = new File("/sdcard/ll1x/");//自已项目 文件夹
+        tempFile=new File("/sdcard/ll1x/"+ Calendar.getInstance().getTimeInMillis()+".jpg"); // 以时间秒为文件名
+        temp = new File("/sdcard/ll1x/");//自已项目 文件夹
         if (!temp.exists()) {
             temp.mkdir();
         }
         intent.putExtra("output", uri.fromFile(tempFile));  // 专入目标文件
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-
-        final BmobFile file=new BmobFile(new File(tempFile.getPath()));
-        MyUser user = new MyUser();
-        user.setImage(file);
-        file.uploadblock(new UploadFileListener() {
-            @Override
-            public void done(BmobException e) {
-                if(e==null){
-                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
         startActivityForResult(intent,CROP_SMALL_PICTURE);
-
     }
 
     /**
@@ -261,14 +252,27 @@ public class activity_profile_page extends AppCompatActivity{
         // 注意这里得到的图片已经是圆形图片了
         // bitmap是没有做个圆形处理的，但已经被裁剪了
 
-        String imagePath = Utils.savePhoto(bitmap, Environment
-                .getExternalStorageDirectory().getAbsolutePath(), String
-                .valueOf(System.currentTimeMillis()));
-        Log.e("imagePath", imagePath+"");
-        if(imagePath != null){
-            // 拿着imagePath上传了
-            // ...
-        }
+//        String imagePath = Utils.savePhoto(bitmap, Environment
+//                .getExternalStorageDirectory().getAbsolutePath(), String
+//                .valueOf(System.currentTimeMillis()));
+
+        final BmobFile file=new BmobFile(new File(tempFile.getPath()));
+        user.setImage(file);
+        file.uploadblock(new UploadFileListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e==null){
+                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"设置失败",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        //Log.e("imagePath", tempFile.getPath()+"");
+//        if(imagePath != null){
+//            // 拿着imagePath上传了
+//            // ...
+//        }
     }
 
     public String[] info1={
