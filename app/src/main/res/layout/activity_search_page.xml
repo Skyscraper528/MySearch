@@ -31,16 +31,6 @@
             android:textSize="15sp"/>
 
         <Button
-            android:layout_width="30sp"
-            android:layout_height="40sp"
-            android:paddingLeft="5sp"
-            android:id="@+id/searchgoods"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:drawableLeft="@mipmap/searchgoods"
-            />
-
-        <Button
             android:layout_width="35sp"
             android:layout_height="40sp"
             android:paddingLeft="5sp"
