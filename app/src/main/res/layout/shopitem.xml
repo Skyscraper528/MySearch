@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="#FFF"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/good_photo1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@mipmap/dm1"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="208dp"
+        android:layout_height="100dp"
+        android:textColor="#312d2d"
+        android:text="商品介绍"
+        android:layout_toRightOf="@id/good_photo1"
+        android:layout_weight="0.63"/>
+
+    <TextView
+        android:id="@+id/price1"
+        android:textColor="#312d2d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textView1"
+        android:layout_marginTop="80dp"
+        android:text="11rmb"/>
+</RelativeLayout>

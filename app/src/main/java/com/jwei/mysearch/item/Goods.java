@@ -1,32 +1,34 @@
 package com.jwei.mysearch.item;
 
+import cn.bmob.v3.BmobObject;
+
 /**
  * Created by Administrator on 2016/12/19.
  */
 
-public class Goods {
+public class Goods extends BmobObject{
 
     public String Goods_name;
     public String Store_name;
     public String Price;
     public String Distance;
-    public int Goods_imageid;
+    public String sImage;
 
     public Goods(){}
 
-    public Goods(String Goods_name,String Store_name,String Price,int Goods_imageid){
+    public Goods(String Goods_name,String Store_name,String Price,String sImage){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Price = Price;
-        this.Goods_imageid = Goods_imageid;
+        this.sImage=sImage;
     }
 
-    public Goods(String Goods_name,String Store_name,String Distance,String Price,int Goods_imageid){
+    public Goods(String Goods_name,String Store_name,String Distance,String Price,String Goods_imageid){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Distance = Distance;
         this.Price = Price;
-        this.Goods_imageid = Goods_imageid;
+        this.sImage= Goods_imageid;
     }
 
 
@@ -58,10 +60,10 @@ public class Goods {
         this.Distance = Distance;
     }
 
-    public int Goods_imageid() {
-        return Goods_imageid;
+    public String Goods_imageid() {
+        return sImage;
     }
-    public void setGoods_imageid(int Goods_imageid) {
-        this.Goods_imageid = Goods_imageid;
+    public void setGoods_imageid(String Goods_imageid) {
+        this.sImage = Goods_imageid;
     }
 }

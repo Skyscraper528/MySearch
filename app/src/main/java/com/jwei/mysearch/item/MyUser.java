@@ -12,6 +12,34 @@ public class MyUser extends BmobUser {
     private Integer age;
     private String tel;
 
+    public String getsEmail() {
+        return sEmail;
+    }
+
+    public void setsEmail(String sEmail) {
+        this.sEmail = sEmail;
+    }
+
+    public String getSelfintroduce() {
+        return selfintroduce;
+    }
+
+    public void setSelfintroduce(String selfintroduce) {
+        this.selfintroduce = selfintroduce;
+    }
+
+    public String getsImage() {
+        return sImage;
+    }
+
+    public void setsImage(String sImage) {
+        this.sImage = sImage;
+    }
+
+    private  String sEmail;
+    private String selfintroduce;
+    private String sImage;
+
     public String getTel() {
         return tel;
     }

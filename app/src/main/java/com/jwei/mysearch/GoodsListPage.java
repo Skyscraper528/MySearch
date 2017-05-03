@@ -117,7 +117,8 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
             g.Store_name = Store_name[index];
             g.Distance = Distance[index];
             g.Price = Price[index];
-            g.Goods_imageid = images[index];
+            String s=String.valueOf(images[index]);
+            g.sImage = s;
             ++index;
             goods.add(g);
 
@@ -214,7 +215,8 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Distance);
             vh.t44.setText(g.Price);
-            vh.iv1.setImageResource(g.Goods_imageid);
+            int j=Integer.parseInt(g.sImage);
+            vh.iv1.setImageResource(j);
             return view;
         }
 

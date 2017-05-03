@@ -2,9 +2,9 @@ package com.jwei.mysearch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.jwei.mysearch.R;
+
 import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
@@ -85,7 +85,8 @@ public class activity_share_page extends AppCompatActivity implements AbsListVie
             g.Goods_name = Goods_name[index];
             g.Store_name = Store_name[index];
             g.Price = Price[index];
-            g.Goods_imageid = images[index];
+            String s=String.valueOf(images[index]);
+            g.sImage = s;
             ++index;
             goods.add(g);
         }
@@ -179,7 +180,8 @@ public class activity_share_page extends AppCompatActivity implements AbsListVie
             vh.t11.setText(g.Goods_name);
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Price);
-            vh.iv1.setImageResource(g.Goods_imageid);
+            int j=Integer.parseInt(g.sImage);
+            vh.iv1.setImageResource(i);
             return view;
         }
 

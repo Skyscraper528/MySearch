@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.jwei.mysearch.MainSearchPage;
 import com.jwei.mysearch.Mapview;
 import com.jwei.mysearch.R;
-import com.jwei.mysearch.activity_login_page;
 import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
@@ -138,7 +137,8 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             g.Goods_name = Goods_name[index];
             g.Store_name = Store_name[index];
             g.Price = Price[index];
-            g.Goods_imageid = images[index];
+            String s=String.valueOf(images[index]);
+            g.sImage = s;
             ++index;
             goods.add(g);
 
@@ -233,7 +233,8 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             vh.t11.setText(g.Goods_name);
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Price);
-            vh.iv1.setImageResource(g.Goods_imageid);
+            int j=Integer.parseInt(g.sImage);
+            vh.iv1.setImageResource(j);
             return view;
         }
 
