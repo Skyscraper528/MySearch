@@ -22,11 +22,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jwei.mysearch.item.MyUser;
 import com.jwei.mysearch.item.Profile;
 import com.jwei.mysearch.other.RenderScriptGaussianBlur;
 import com.jwei.mysearch.other.Utils;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.Vector;
 
 import cn.bmob.v3.datatype.BmobFile;
@@ -204,10 +206,29 @@ public class activity_profile_page extends AppCompatActivity{
         intent.putExtra("outputX", 200);
         intent.putExtra("outputY", 200);
         intent.putExtra("scale",true);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         //intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         intent.putExtra("noFaceDetection", "true");
         intent.putExtra("return-data",true);
+
+        File tempFile=new File("/sdcard/ll1x/"+ Calendar.getInstance().getTimeInMillis()+".jpg"); // 以时间秒为文件名
+        File temp = new File("/sdcard/ll1x/");//自已项目 文件夹
+        if (!temp.exists()) {
+            temp.mkdir();
+        }
+        intent.putExtra("output", uri.fromFile(tempFile));  // 专入目标文件
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+
+        final BmobFile file=new BmobFile(new File(tempFile.getPath()));
+        MyUser user = new MyUser();
+        user.setImage(file);
+        file.uploadblock(new UploadFileListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e==null){
+                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         startActivityForResult(intent,CROP_SMALL_PICTURE);
 
     }

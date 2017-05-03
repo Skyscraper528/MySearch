@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -21,6 +22,8 @@ import android.widget.TextView;
 import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
+
+import static android.content.Intent.ACTION_EDIT;
 
 public class GoodsListPage extends AppCompatActivity implements AbsListView.OnScrollListener{
     ListView listView;
@@ -59,6 +62,28 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
         initData();
         myAdapter = new MyAdapter(this);
         listView.setAdapter(myAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView goodsname = (TextView) view.findViewById(R.id.goods_name);
+                String goods_name = (String) goodsname.getText();
+                TextView storename = (TextView) view.findViewById(R.id.store_name);
+                String store_name = (String) storename.getText();
+                TextView distance = (TextView) view.findViewById(R.id.distance);
+                String distance_ = (String) distance.getText();
+                TextView goodsprice = (TextView) view.findViewById(R.id.goods_price);
+                String goods_price = (String) goodsprice.getText();
+
+                Intent intent=new Intent(GoodsListPage.this,GoodDetail.class);
+                intent.putExtra("goodsname",goods_name);
+                intent.putExtra("storename",store_name);
+                //intent.putExtra("com.jwei.mysearch.GoodListPage.distance",distance_);
+                intent.putExtra("goodsprice",goods_price);
+                startActivity(intent);
+            }
+        });
+
 
         condition = (Spinner) findViewById(R.id.spinner_condition);
         ArrayAdapter< String> adapter = new ArrayAdapter< String>( this,R.layout.spinner_style);

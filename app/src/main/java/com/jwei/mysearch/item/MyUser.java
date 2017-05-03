@@ -1,6 +1,7 @@
 package com.jwei.mysearch.item;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by sh on 2017/5/2.
@@ -11,6 +12,7 @@ public class MyUser extends BmobUser {
     private String nick;
     private Integer age;
     private String tel;
+    private BmobFile image;
 
     public String getsEmail() {
         return sEmail;
@@ -28,17 +30,16 @@ public class MyUser extends BmobUser {
         this.selfintroduce = selfintroduce;
     }
 
-    public String getsImage() {
-        return sImage;
+    public void setImage(BmobFile image) {
+        this.image = image;
     }
 
-    public void setsImage(String sImage) {
-        this.sImage = sImage;
+    public BmobFile getImage() {
+        return image;
     }
 
     private  String sEmail;
     private String selfintroduce;
-    private String sImage;
 
     public String getTel() {
         return tel;

@@ -32,16 +32,23 @@ import cn.bmob.v3.Bmob;
 
 public class activity_shop_main extends Activity {
     private TextView mString;
+    private TextView shopname;
     private ImageView mImage;
     private Shop mShop;
     private String url;
-    private Button stepback;
+    private TextView stepback;
     private List<Goods> mGoods;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
         setContentView(R.layout.activity_shop_main);
+
+        shopname = (TextView) findViewById(R.id.shopname);
+        Intent intent = this.getIntent();
+        String shop_name = intent.getStringExtra("storename");
+        shopname.setText(shop_name);
+
         ListView lv=(ListView) findViewById(R.id.goodsview01);
         //生成动态数组，加入数据
         ArrayList<HashMap<String, Object>> listItem
@@ -65,7 +72,8 @@ public class activity_shop_main extends Activity {
 
         //添加并且显示
         lv.setAdapter(listItemAdapter);
-        stepback=(Button) findViewById(R.id.stepback);
+
+        stepback=(TextView) findViewById(R.id.stepback);
         stepback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +81,7 @@ public class activity_shop_main extends Activity {
                 startActivity(intent);
             }
         });
+
         //setContentView(R.layout.activity_main);
 //        mString = (TextView) findViewById(R.id.shop_string);
 //        // mString.setText("你猜");
