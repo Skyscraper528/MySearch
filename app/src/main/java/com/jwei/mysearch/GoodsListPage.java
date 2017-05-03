@@ -1,21 +1,23 @@
 package com.jwei.mysearch;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.jwei.mysearch.R;
 import com.jwei.mysearch.item.Goods;
 
 import java.util.Vector;
@@ -26,12 +28,30 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
     public Vector<Goods> goods = new Vector<>();
     public MyAdapter myAdapter;
     public static final int loading=0x1;
+    private Button back1;
+    private EditText search;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_list_page);
+        back1=(Button) findViewById(R.id.back1);
+        back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(GoodsListPage.this,MainSearchPage.class);
+                startActivity(intent);
+            }
+        });
+        search=(EditText) findViewById(R.id.search);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(GoodsListPage.this,MainSearchPage.class);
+                startActivity(intent);
+            }
+        });
         listView = (ListView) findViewById(R.id.listview5);
         View footerView = getLayoutInflater().inflate(R.layout.loading,null);
         listView.addFooterView(footerView);

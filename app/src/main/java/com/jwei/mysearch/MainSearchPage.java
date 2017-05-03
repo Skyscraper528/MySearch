@@ -19,6 +19,7 @@ import java.util.HashMap;
 public class MainSearchPage extends AppCompatActivity{
     private TextView tev1,tev2,tev3,tev4,tev5;
     private Button cancel1;
+    private Button search1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,14 @@ public class MainSearchPage extends AppCompatActivity{
                 Intent intent=new Intent(MainSearchPage.this,MainPages.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        search1=(Button) findViewById(R.id.search1);
+        search1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainSearchPage.this,GoodsListPage.class);
+                startActivity(intent);
             }
         });
         ListView lv=(ListView) findViewById(R.id.lv1);
