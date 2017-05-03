@@ -58,14 +58,6 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             }
         });
 
-        place = (Button) view.findViewById(R.id.place);
-        place.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),activity_login_page.class);
-                startActivity(intent);
-            }
-        });
         search1=(EditText) view.findViewById(R.id.mainpage_search);
         search1.setOnClickListener(new View.OnClickListener() {
             @Override

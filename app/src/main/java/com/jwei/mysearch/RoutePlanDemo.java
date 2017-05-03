@@ -513,6 +513,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             }
         }
 
+
         public void onReceivePoi(BDLocation poiLocation) {
         }
     }
