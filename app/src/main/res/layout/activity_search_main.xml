@@ -11,18 +11,23 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/backcolor">
+        android:background="#21b2fa">
+
         <Button
             android:id="@+id/cancel1"
-            android:drawableRight="@mipmap/left"
-            android:layout_width="46dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:background="#21b2fa"
+            android:drawableRight="@mipmap/left"
             />
+
         <EditText
-            android:layout_width="283dp"
+            android:layout_width="274dp"
             android:layout_height="36dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/shape2"
+            android:background="#FFF"
+            android:textColor="#312d2d"
+            android:textColorHint="#807979"
             android:hint="输入商品/商店"
             />
 
@@ -30,14 +35,14 @@
             android:id="@+id/search1"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:background="@drawable/shape"
+            android:background="#21b2fa"
             android:text="搜索"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/backcolor"
+        android:background="#21b2fa"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -104,6 +109,7 @@
 
     <ListView
         android:id="@+id/lv1"
+        android:background="#FFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </ListView>

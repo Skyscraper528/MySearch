@@ -3,22 +3,23 @@ package com.jwei.mysearch.fragment;
 
 
 import android.content.Context;
-import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jwei.mysearch.MainSearchPage;
 import com.jwei.mysearch.Mapview;
 import com.jwei.mysearch.R;
 import com.jwei.mysearch.activity_login_page;
@@ -39,6 +40,7 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
     private int contentView;
     private Button to_mapview;
     private Button place;
+    private EditText search1;
 
 
 
@@ -61,6 +63,14 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(),activity_login_page.class);
+                startActivity(intent);
+            }
+        });
+        search1=(EditText) view.findViewById(R.id.mainpage_search);
+        search1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), MainSearchPage.class);
                 startActivity(intent);
             }
         });

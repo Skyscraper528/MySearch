@@ -12,32 +12,50 @@
         android:id="@+id/tab_title"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:orientation="horizontal"
         android:background="#21b2fa"
+        android:orientation="horizontal"
         >
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="35sp"
-            android:layout_weight="0.60"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15sp"
-            android:paddingLeft="5sp"
-            android:drawableLeft="@mipmap/searchpageicon"
-            android:background="@drawable/listview_bg1"
-            android:id="@+id/mainpage_search"
-            android:hint="经纬小公举"
-            android:textColorHint="#807979"
-            android:textColor="#312d2d"
-            android:textSize="15sp"/>
 
         <Button
+            android:id="@+id/place"
+            android:layout_width="26dp"
+            android:layout_height="match_parent"
+            android:background="#21b2fa"
+            android:drawableLeft="@mipmap/back"/>
+
+        <EditText
+            android:id="@+id/mainpage_search"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15sp"
+            android:layout_weight="0.51"
+            android:background="@drawable/listview_bg1"
+            android:drawableLeft="@mipmap/searchpageicon"
+            android:hint="经纬小公举"
+            android:paddingLeft="5sp"
+            android:textColor="#312d2d"
+            android:textColorHint="#807979"
+            android:textSize="15sp"/>
+
+        <!--<Button-->
+        <!--android:layout_width="30sp"-->
+        <!--android:layout_height="40sp"-->
+        <!--android:paddingLeft="5sp"-->
+        <!--android:id="@+id/searchgoods"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--android:drawableLeft="@mipmap/"-->
+        <!--/>-->
+
+        <Button
+            android:id="@+id/searchtomap"
             android:layout_width="35sp"
             android:layout_height="40sp"
-            android:paddingLeft="5sp"
-            android:id="@+id/searchtomap"
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:drawableLeft="@mipmap/location2"
+            android:paddingLeft="5sp"
             />
     </LinearLayout>
 
