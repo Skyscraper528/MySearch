@@ -1,6 +1,7 @@
 package com.jwei.mysearch;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +28,7 @@ public class MainPages extends FragmentActivity implements View.OnClickListener{
     public static final int FRAGMENT_ONE=0;
     public static final int FRAGMENT_TWO=1;
     private int position;
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +39,12 @@ public class MainPages extends FragmentActivity implements View.OnClickListener{
         bindView();
         showFragment(FRAGMENT_ONE);
         tabSearch.setSelected(true);
-        int id = getIntent().getIntExtra("id",0);
+        Intent intent = this.getIntent();
+        int id = intent.getIntExtra("id",0);
         if (id==1) {
             showFragment(FRAGMENT_TWO);
         }
+        //username = intent.getStringExtra("username");
     }
 
     @Override
@@ -96,8 +100,11 @@ public class MainPages extends FragmentActivity implements View.OnClickListener{
 
                 break;
             case FRAGMENT_TWO:
+//                Bundle bundle=new Bundle();
+//                bundle.putString("mes",username);
                 if (userPage==null){
                     userPage=new UserPage();
+                    //userPage.setArguments(bundle);
                     ft.add(R.id.fragment_container,userPage);
                     tabUser.setSelected(true);
                 }else {

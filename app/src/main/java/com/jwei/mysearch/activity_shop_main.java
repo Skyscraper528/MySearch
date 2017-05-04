@@ -41,7 +41,7 @@ public class activity_shop_main extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
+        Bmob.initialize(this, "c3691faf8b85561c7d207be91a25b9e4");
         setContentView(R.layout.activity_shop_main);
 
         shopname = (TextView) findViewById(R.id.shopname);

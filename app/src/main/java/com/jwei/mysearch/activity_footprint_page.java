@@ -2,10 +2,14 @@ package com.jwei.mysearch;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,6 +22,8 @@ import com.jwei.mysearch.item.Goods;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+
 public class activity_footprint_page extends AppCompatActivity {
 
     private ListView mListview;
@@ -27,13 +33,40 @@ public class activity_footprint_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bmob.initialize(this, "c3691faf8b85561c7d207be91a25b9e4");
         setContentView(R.layout.activity_footprint_page);
 
         mListview=(ListView)findViewById(R.id.footprint_list);
         mAdapter=new MultiStyleListAdapter(this);
         mListview.setAdapter(mAdapter);
-
         createData();
+
+        mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView goodsnamefootprint = (TextView) view.findViewById(R.id.collect_goods_name);
+                String goods_name_footprint = (String) goodsnamefootprint.getText();
+                TextView storenamefootprint = (TextView) view.findViewById(R.id.store_name1);
+                String store_name_footprint = (String) storenamefootprint.getText();
+                TextView goodspricefootprint = (TextView) view.findViewById(R.id.collection_goods_price);
+                String goods_price_footprint = (String) goodspricefootprint.getText();
+                ImageView pic = (ImageView) view.findViewById(R.id.collect_goods_imageview);
+                Drawable image = pic.getDrawable();
+                BitmapDrawable bd = (BitmapDrawable) image;
+                Bitmap bitmap = bd.getBitmap();
+
+                Intent intent=new Intent(activity_footprint_page.this,GoodDetail.class);
+                intent.putExtra("id",2);
+                intent.setAction("gooddetail");
+                intent.putExtra("image1", bitmap);
+                intent.putExtra("namefootprint",goods_name_footprint); // 第一个参数指定name，android规范是以包名+变量名来命名，后面是各种类型的数据类型
+                intent.putExtra("storenamefootprint",store_name_footprint);
+                intent.putExtra("pricefootprint",goods_price_footprint);
+                startActivity(intent);
+            }
+        });
+
+
         back = (Button) findViewById(R.id.footprint_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,13 +81,13 @@ public class activity_footprint_page extends AppCompatActivity {
     private void createData(){
         List<Object> dataAll=new ArrayList<>();
         dataAll.add(new FootprintTime("一个星期内"));
-        dataAll.add(new Goods("疯狂Android讲义 李刚疯狂的Android讲义教程从入门到精通","瑞意图书专营店","¥88.60","R.mipmap.goods1"));
-        dataAll.add(new Goods("林宥嘉 大小说家 CD+三张明信片+写真歌词本","天沐音像专营店","¥49.00","R.mipmap.goods2"));
-        dataAll.add(new Goods("短袖T恤男 经典卡通动物印花圆领TEE","lifeafterlife旗舰店","¥59.00","R.mipmap.goods3"));
+        dataAll.add(new Goods("疯狂Android讲义 李刚疯狂的Android讲义教程从入门到精通","瑞意图书专营店","¥88.60",String.valueOf(R.mipmap.goods1)));
+        dataAll.add(new Goods("林宥嘉 大小说家 CD+三张明信片+写真歌词本","天沐音像专营店","¥49.00",String.valueOf(R.mipmap.goods2)));
+        dataAll.add(new Goods("短袖T恤男 经典卡通动物印花圆领TEE","lifeafterlife旗舰店","¥59.00",String.valueOf(R.mipmap.goods3)));
         dataAll.add(new FootprintTime("一个月内"));
-        dataAll.add(new Goods("马可彩铅笔72/48色油性彩铅专业绘画美术填图笔","标逸办公专营店","¥72.00","R.mipmap.goods4"));
-        dataAll.add(new Goods("威诺时男士高档学生潮流时装表防水手表","西子表屋","¥168.00","R.mipmap.goods5"));
-        dataAll.add(new Goods("威爵士男女士牛奶滋润洗发水去屑洗发露正品留香牛奶味","创美时尚馆美发护发正品店","¥38.00","R.mipmap.goods6"));
+        dataAll.add(new Goods("马可彩铅笔72/48色油性彩铅专业绘画美术填图笔","标逸办公专营店","¥72.00",String.valueOf(R.mipmap.goods4)));
+        dataAll.add(new Goods("威诺时男士高档学生潮流时装表防水手表","西子表屋","¥168.00",String.valueOf(R.mipmap.goods5)));
+        dataAll.add(new Goods("威爵士男女士牛奶滋润洗发水去屑洗发露正品留香牛奶味","创美时尚馆美发护发正品店","¥38.00",String.valueOf(R.mipmap.goods6)));
         mAdapter.setList(dataAll);
         mAdapter.notifyDataSetChanged();
     }

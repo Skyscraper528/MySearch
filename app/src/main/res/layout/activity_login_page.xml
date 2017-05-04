@@ -65,7 +65,7 @@
                     android:background="@android:color/transparent"
                     android:layout_gravity="center"
                     android:ems="10"
-                    android:text=""
+                    android:text="18059004179"
                     android:textColor="#000000"
                     android:textSize="15sp">
                     <requestFocus />
@@ -106,10 +106,11 @@
                     android:layout_marginLeft="5sp"
                     android:background="@android:color/transparent"
                     android:ems="10"
-                    android:text=""
+                    android:inputType="textPassword"
+                    android:text="aa651903069"
                     android:textColor="#000000"
-                    android:textSize="15sp"
-                    android:inputType="textPassword">
+                    android:textSize="15sp">
+
                     <requestFocus />
                 </EditText>
 

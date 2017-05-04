@@ -18,6 +18,7 @@ public class GoodDetail extends AppCompatActivity {
     private TextView storename;
     private TextView goodsname;
     private TextView goodsprice;
+    private TextView distance_;
     private ImageView goodsimage;
 
     @Override
@@ -27,28 +28,42 @@ public class GoodDetail extends AppCompatActivity {
 
         storename = (TextView) findViewById(R.id.store_name3);
         goodsname = (TextView) findViewById(R.id.goods_name1);
-        // distance_ = (TextView) findViewById(R.id.distance);
+        distance_ = (TextView) findViewById(R.id.goods_distance1);
         goodsprice = (TextView) findViewById(R.id.goods_price1);
         goodsimage = (ImageView) findViewById(R.id.goods_image1);
 
-        //    得到跳转到该Activity的Intent对象
         Intent intent = this.getIntent();
-        String goods_name = intent.getStringExtra("goodsname");
-        final String store_name = intent.getStringExtra("storename");
-        //String distance = intent.getStringExtra("com.jwei.mysearch.GoodListPage.distance");
-        String goods_price = intent.getStringExtra("goodsprice");
-        Bitmap goods_image=intent.getParcelableExtra("image");
+        int id = intent.getIntExtra("id",0);
+        if (id==1) {
+            //    得到跳转到该Activity的Intent对象
+            String goods_name = intent.getStringExtra("goodsname");
+            final String store_name = intent.getStringExtra("storename");
+            String distance = intent.getStringExtra("distance");
+            String goods_price = intent.getStringExtra("goodsprice");
+            Bitmap goods_image=intent.getParcelableExtra("image");
 
-        goodsimage.setImageBitmap(goods_image);
-        goodsname.setText(goods_name);
-        storename.setText(store_name);
-        goodsprice.setText(goods_price);
+            goodsimage.setImageBitmap(goods_image);
+            goodsname.setText(goods_name);
+            storename.setText(store_name);
+            goodsprice.setText(goods_price);
+            distance_.setText(distance);
+        } else if(id ==2){
+            String goods_name = intent.getStringExtra("namefootprint");
+            final String store_name = intent.getStringExtra("storenamefootprint");
+            String goods_price = intent.getStringExtra("pricefootprint");
+            Bitmap goods_image=intent.getParcelableExtra("image1");
+
+            goodsimage.setImageBitmap(goods_image);
+            goodsname.setText(goods_name);
+            storename.setText(store_name);
+            goodsprice.setText(goods_price);
+        }
 
         storename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(GoodDetail.this,activity_shop_main.class);
-                intent.putExtra("storename",store_name);
+                intent.putExtra("storename",storename.getText());
                 startActivity(intent);
             }
         });

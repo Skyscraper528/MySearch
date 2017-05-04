@@ -58,20 +58,20 @@ public class StoreCollection extends Fragment implements AbsListView.OnScrollLis
     };
 
     public String[] Distance={
-            "距离:2.6km",
-            "距离:4.8km",
-            "距离:4.5km",
-            "距离:1.5km",
-            "距离:6.5km",
-            "距离:3.3km"
+            "2.6km",
+            "4.8km",
+            "4.5km",
+            "1.5km",
+            "6.5km",
+            "3.3km"
     };
 
-    public int[] images={R.mipmap.store1,
-            R.mipmap.store2,
-            R.mipmap.store3,
-            R.mipmap.store4,
-            R.mipmap.store5,
-            R.mipmap.store6
+    public String[] images={String.valueOf(R.mipmap.store1),
+            String.valueOf(R.mipmap.store2),
+            String.valueOf(R.mipmap.store3),
+            String.valueOf(R.mipmap.store4),
+            String.valueOf(R.mipmap.store5),
+            String.valueOf(R.mipmap.store6)
     };
 
     public void initData(){
@@ -165,12 +165,12 @@ public class StoreCollection extends Fragment implements AbsListView.OnScrollLis
                 vh = (ViewHolder) view.getTag();
             }
             Store g = store.get(i);
-
+            int storeimageid = Integer.valueOf(g.Store_imageid).intValue();
 
             //System.out.println("view"+view);
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Distance);
-            vh.iv1.setImageResource(g.Store_imageid);
+            vh.iv1.setImageResource(storeimageid);
             return view;
         }
 

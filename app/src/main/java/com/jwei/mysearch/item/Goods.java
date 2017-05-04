@@ -14,6 +14,17 @@ public class Goods extends BmobObject{
     public String Distance;
     public String sImage;
 
+    public int getHot() {
+
+        return hot;
+    }
+
+    public void setHot(int hot) {
+        this.hot = hot;
+    }
+
+    public int hot;
+
     public Goods(){}
 
     public Goods(String Goods_name,String Store_name,String Price,String sImage){

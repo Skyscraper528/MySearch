@@ -81,10 +81,11 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
                 Bitmap bitmap = bd.getBitmap();
 
                 Intent intent=new Intent(GoodsListPage.this,GoodDetail.class);
+                intent.putExtra("id",1);
                 intent.putExtra("image", bitmap);
                 intent.putExtra("goodsname",goods_name);
                 intent.putExtra("storename",store_name);
-                //intent.putExtra("com.jwei.mysearch.GoodListPage.distance",distance_);
+                intent.putExtra("distance",distance_);
                 intent.putExtra("goodsprice",goods_price);
                 startActivity(intent);
             }
@@ -129,10 +130,10 @@ public class GoodsListPage extends AppCompatActivity implements AbsListView.OnSc
     };
 
     public String[] Distance={
-            "距离:2.6km",
-            "距离:4.8km",
-            "距离:4.5km",
-            "距离:1.5km"
+            "2.6km",
+            "4.8km",
+            "4.5km",
+            "1.5km"
     };
 
     public int[] images={R.mipmap.goods1,

@@ -3,6 +3,7 @@ package com.jwei.mysearch;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -58,6 +59,7 @@ public class activity_profile_page extends AppCompatActivity{
     MyUser user = new MyUser();
     File tempFile;
     File temp;
+    TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +123,11 @@ public class activity_profile_page extends AppCompatActivity{
         listView3 = (ListView) findViewById(R.id.profile_list3);
         myAdapter3 = new MyAdapter3(this);
         listView3.setAdapter(myAdapter3);
+
+        username = (TextView) findViewById(R.id.profile_user_name);
+        SharedPreferences sp = getSharedPreferences("data", Context.MODE_PRIVATE);
+        String loginName = sp.getString("LoginName", "wrong key");
+        username.setText(loginName);
 
     }
 

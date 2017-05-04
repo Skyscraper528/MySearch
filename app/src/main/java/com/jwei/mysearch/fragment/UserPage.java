@@ -1,5 +1,6 @@
 package com.jwei.mysearch.fragment;
 
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import com.jwei.mysearch.activity_profile_page;
 import com.jwei.mysearch.activity_setting_page;
 import com.jwei.mysearch.activity_share_page;
 import com.jwei.mysearch.item.Set;
+
 import java.util.Vector;
 
 /**
@@ -48,6 +50,7 @@ public class UserPage extends Fragment {
     private Bitmap icon;
     private TextView Username;
     private String uname;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -61,8 +64,8 @@ public class UserPage extends Fragment {
                 startActivity(intent);
             }
         });
-        Username=(TextView) view.findViewById(R.id.username);
-        Username.setText(uname);
+
+        Username = (TextView) view.findViewById(R.id.username);
 
         iv_personal_icon = (ImageView) view.findViewById(R.id.iv_personal_icon);
         iv_personal_icon.setOnClickListener(new View.OnClickListener() {
@@ -120,8 +123,20 @@ public class UserPage extends Fragment {
             }
         });
 
+//        Bundle bundle=getArguments();
+//        if(bundle!=null)
+//        {
+//            String data = bundle.getString("mes");
+//            Username.setText(data);
+//
+//        }
+
+        SharedPreferences sp = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+        String loginName = sp.getString("LoginName", "wrong key");
+        Username.setText(loginName);
         return view;
     }
+
 
     public int index = 0;
     /*
