@@ -8,7 +8,7 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 
 public class MyUser extends BmobUser {
-    private Boolean sex;
+    private String sex;
     private String nick;
     private Integer age;
     private String tel;
