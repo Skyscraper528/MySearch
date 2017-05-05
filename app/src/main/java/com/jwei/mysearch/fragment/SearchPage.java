@@ -138,7 +138,7 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             g.Store_name = Store_name[index];
             g.Price = Price[index];
             String s=String.valueOf(images[index]);
-            g.sImage = s;
+            //g.sImage = s;
             ++index;
             goods.add(g);
 
@@ -233,8 +233,8 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
             vh.t11.setText(g.Goods_name);
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Price);
-            int j=Integer.parseInt(g.sImage);
-            vh.iv1.setImageResource(j);
+//            int j=Integer.parseInt(g.sImage);
+//            vh.iv1.setImageResource(j);
             return view;
         }
 

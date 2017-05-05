@@ -42,22 +42,6 @@ public class activity_login_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        MyUser bmobUser = MyUser.getCurrentUser(MyUser.class);
-        if(bmobUser!= null){
-            Intent intent=new Intent(activity_login_page.this,MainPages.class);
-//                            intent.putExtra("username",uname.getText().toString());
-//                            intent.putExtra("id",2);
-            //LoginName.setLoginname(uname.getText().toString());
-//            SharedPreferences.Editor spe = (SharedPreferences.Editor) getSharedPreferences("data", MODE_PRIVATE).edit();
-//            spe.putString("LoginName",uname.getText().toString());
-//            spe.apply();
-            startActivity(intent);// 允许用户使用应用
-        }else{
-//            Intent intent=new Intent(activity_login_page.this,activity_login_page.class);
-//            startActivity(intent);
-            //缓存用户对象为空时， 可打开用户注册界面…
-        }
-
         Login=(Button) findViewById(R.id.Login1);
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,17 +50,19 @@ public class activity_login_page extends AppCompatActivity {
                     @Override
                     public void done(MyUser myUser, BmobException e) {
                         if(myUser!=null){
-                            Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_LONG).show();
 
-                                Intent intent=new Intent(activity_login_page.this,MainPages.class);
+                            Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(activity_login_page.this,MainPages.class);
 //                            intent.putExtra("username",uname.getText().toString());
 //                            intent.putExtra("id",2);
-                                //LoginName.setLoginname(uname.getText().toString());
-                                SharedPreferences.Editor spe = (SharedPreferences.Editor) getSharedPreferences("data", MODE_PRIVATE).edit();
-                                spe.putString("LoginName",uname.getText().toString());
-                                spe.apply();
-                                startActivity(intent);// 允许用户使用应用
+                            //LoginName.setLoginname(uname.getText().toString());
+                            SharedPreferences.Editor spe = (SharedPreferences.Editor) getSharedPreferences("data", MODE_PRIVATE).edit();
+                            spe.putString("LoginName",uname.getText().toString());
+                            spe.apply();
 
+                            startActivity(intent);
+
+                            finish();
                         }else{
                             Toast.makeText(getApplicationContext(),"登录失败，请重试",Toast.LENGTH_LONG).show();
                         }
@@ -85,6 +71,7 @@ public class activity_login_page extends AppCompatActivity {
                 });
             }
         });
+
 
 
     }

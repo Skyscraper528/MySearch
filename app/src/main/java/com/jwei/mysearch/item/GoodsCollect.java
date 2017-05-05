@@ -1,13 +1,14 @@
 package com.jwei.mysearch.item;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2017/5/4.
  */
 
 public class GoodsCollect extends BmobObject {
-    public String goodscollectimage;
+    public BmobFile goodscollectimage;
     public String goodscollectname;
     public String goodscollectprice;
     public String goodscollectstore;
@@ -29,11 +30,11 @@ public class GoodsCollect extends BmobObject {
         this.goodscollectname = goodscollectname;
     }
 
-    public String getGoodscollectimage() {
+    public BmobFile getGoodscollectimage() {
         return goodscollectimage;
     }
 
-    public void setGoodscollectimage(String goodscollectimage) {
+    public void setGoodscollectimage(BmobFile goodscollectimage) {
         this.goodscollectimage = goodscollectimage;
     }
 

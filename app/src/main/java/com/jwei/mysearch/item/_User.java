@@ -7,12 +7,12 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by sh on 2017/5/2.
  */
 
-public class MyUser extends BmobUser {
-    private String sex;
-    private String nick;
+public class _User extends BmobUser {
+    private Boolean sex;
+    public String nick;
     private Integer age;
     private String tel;
-    private BmobFile image;
+    public BmobFile image;
 
     public String getsEmail() {
         return sEmail;
@@ -69,11 +69,11 @@ public class MyUser extends BmobUser {
     private String slefintroduce;
 //    private String Country;
 
-    public String getSex() {
+    public boolean getSex() {
         return this.sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(boolean sex) {
         this.sex = sex;
     }
 
@@ -92,9 +92,9 @@ public class MyUser extends BmobUser {
     public void setAge(Integer age) {
         this.age = age;
     }
-//    public void setSex(String sex) {
-//        this.sex = sex;
-//    }
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
 
 //    public String getCountry() {
 //        return Country;

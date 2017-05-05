@@ -65,7 +65,7 @@ public class activity_register_page extends AppCompatActivity {
                         bu.setPassword(Upassword1.getText().toString());
                         bu.signUp(new SaveListener<MyUser>() {
                             @Override
-                            public void done(MyUser myUser, BmobException e) {
+                            public void done(MyUser user, BmobException e) {
                                 if(e==null){
                                     Toast.makeText(getApplicationContext(),"注册成功",Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(activity_register_page.this,AppStart.class);

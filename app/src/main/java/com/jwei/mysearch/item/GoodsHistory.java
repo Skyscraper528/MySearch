@@ -1,13 +1,14 @@
 package com.jwei.mysearch.item;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2017/5/4.
  */
 
 public class GoodsHistory extends BmobObject {
-    public String goodsimagefootprint;
+    public BmobFile goodsimagefootprint;
     public String goodsnamefootprint;
     public String goodspricefootprint;
     public String goodsstorefootprint;
@@ -21,11 +22,11 @@ public class GoodsHistory extends BmobObject {
 //        this.goodsimagefootprint=sImage;
 //    }
 
-    public String getGoodsimagefootprint() {
+    public BmobFile getGoodsimagefootprint() {
         return goodsimagefootprint;
     }
 
-    public void setGoodsimagefootprint(String goodsimagefootprint) {
+    public void setGoodsimagefootprint(BmobFile goodsimagefootprint) {
         this.goodsimagefootprint = goodsimagefootprint;
     }
 

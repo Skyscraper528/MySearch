@@ -86,7 +86,7 @@ public class activity_share_page extends AppCompatActivity implements AbsListVie
             g.Store_name = Store_name[index];
             g.Price = Price[index];
             String s=String.valueOf(images[index]);
-            g.sImage = s;
+            //g.sImage = s;
             ++index;
             goods.add(g);
         }
@@ -180,8 +180,8 @@ public class activity_share_page extends AppCompatActivity implements AbsListVie
             vh.t11.setText(g.Goods_name);
             vh.t22.setText(g.Store_name);
             vh.t33.setText(g.Price);
-            int j=Integer.parseInt(g.sImage);
-            vh.iv1.setImageResource(i);
+//            int j=Integer.parseInt(g.sImage);
+//            vh.iv1.setImageResource(i);
             return view;
         }
 

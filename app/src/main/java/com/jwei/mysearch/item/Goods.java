@@ -1,6 +1,7 @@
 package com.jwei.mysearch.item;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2016/12/19.
@@ -12,7 +13,7 @@ public class Goods extends BmobObject{
     public String Store_name;
     public String Price;
     public String Distance;
-    public String sImage;
+    public BmobFile sImage;
     public int Hot=0;
 
     public int getHot() {
@@ -28,14 +29,14 @@ public class Goods extends BmobObject{
 
     public Goods(){}
 
-    public Goods(String Goods_name,String Store_name,String Price,String sImage){
+    public Goods(String Goods_name,String Store_name,String Price,BmobFile sImage){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Price = Price;
         this.sImage=sImage;
     }
 
-    public Goods(String Goods_name,String Store_name,String Distance,String Price,String Goods_imageid){
+    public Goods(String Goods_name,String Store_name,String Distance,String Price,BmobFile Goods_imageid){
         this.Goods_name = Goods_name;
         this.Store_name = Store_name;
         this.Distance = Distance;
@@ -72,10 +73,10 @@ public class Goods extends BmobObject{
         this.Distance = Distance;
     }
 
-    public String getGoods_imageid() {
+    public BmobFile getGoods_image() {
         return sImage;
     }
-    public void setGoods_imageid(String Goods_imageid) {
-        this.sImage = Goods_imageid;
+    public void setGoods_image(BmobFile Goods_image) {
+        this.sImage = Goods_image;
     }
 }
