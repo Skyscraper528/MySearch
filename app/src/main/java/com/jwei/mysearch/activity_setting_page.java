@@ -3,7 +3,6 @@ package com.jwei.mysearch;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jwei.mysearch.R;
 import com.jwei.mysearch.item.Set;
 
 import java.util.Vector;
+
+import cn.bmob.v3.BmobUser;
 
 public class activity_setting_page extends Activity {
 
@@ -52,6 +52,8 @@ public class activity_setting_page extends Activity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BmobUser.logOut();   //清除缓存用户对象
+                BmobUser currentUser = BmobUser.getCurrentUser(); // 现在的currentUser是null了
                 Toast.makeText(getApplicationContext(),"退出成功",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(activity_setting_page.this,activity_login_page.class);
                 startActivity(intent);

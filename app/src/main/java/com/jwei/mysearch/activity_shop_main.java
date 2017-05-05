@@ -6,14 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.jwei.mysearch.item.Shop;
 import com.jwei.mysearch.item.Goods;
+import com.jwei.mysearch.item.Shop;
 
 import java.io.IOException;
 import java.io.InputStream;
