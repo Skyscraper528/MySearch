@@ -33,8 +33,10 @@ import java.util.Calendar;
 import java.util.Vector;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 public class activity_profile_page extends AppCompatActivity{
@@ -254,32 +256,44 @@ public class activity_profile_page extends AppCompatActivity{
     }
 
     private void uploadPic(Bitmap bitmap) {
-        // 上传至服务器
-        // ... 可以在这里把Bitmap转换成file，然后得到file的url，做文件上传操作
-        // 注意这里得到的图片已经是圆形图片了
-        // bitmap是没有做个圆形处理的，但已经被裁剪了
 
-//        String imagePath = Utils.savePhoto(bitmap, Environment
-//                .getExternalStorageDirectory().getAbsolutePath(), String
-//                .valueOf(System.currentTimeMillis()));
 
         final BmobFile file=new BmobFile(new File(tempFile.getPath()));
-        user.setImage(file);
-        file.uploadblock(new UploadFileListener() {
+        file.upload(new UploadFileListener() {
             @Override
             public void done(BmobException e) {
                 if(e==null){
-                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
+                    MyUser myuser = BmobUser.getCurrentUser(MyUser.class);
+                    myuser.setImage(file);
+                    myuser.setSelfintroduce("宝宝想死");
+                    myuser.setNick("苏涵傻逼");
+                    myuser.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if(e==null){
+                                Toast.makeText(activity_profile_page.this,"头像上传成功",Toast.LENGTH_SHORT);
+                            }else{
+                                Toast.makeText(activity_profile_page.this,"头像上传失败",Toast.LENGTH_SHORT);
+                            }
+                        }
+                    });
                 }else{
-                    Toast.makeText(getApplicationContext(),"设置失败",Toast.LENGTH_LONG).show();
+                    Toast.makeText(activity_profile_page.this,"头像上传失败",Toast.LENGTH_SHORT);
                 }
             }
         });
-        //Log.e("imagePath", tempFile.getPath()+"");
-//        if(imagePath != null){
-//            // 拿着imagePath上传了
-//            // ...
-//        }
+
+//        file.uploadblock(new UploadFileListener() {
+//            @Override
+//            public void done(BmobException e) {
+//                if(e==null){
+//                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
+//                }else{
+//                    Toast.makeText(getApplicationContext(),"设置失败",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+
     }
 
     public String[] info1={
