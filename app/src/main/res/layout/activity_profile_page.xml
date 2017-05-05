@@ -8,8 +8,6 @@
     android:id="@+id/activity_profile_page"
     tools:context="com.jwei.mysearch.activity_profile_page">
 
-
-
     <ImageView
         android:id="@+id/profile_personal_icon_blur"
         android:layout_width="match_parent"

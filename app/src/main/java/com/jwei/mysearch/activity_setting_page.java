@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.jwei.mysearch.R;
 import com.jwei.mysearch.item.Set;
 
@@ -25,6 +27,7 @@ public class activity_setting_page extends Activity {
     public MyAdapter myAdapter;
     public static final int loading=0x1;
     Button settingPageBack;
+    Button exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,16 @@ public class activity_setting_page extends Activity {
         listView = (ListView) findViewById(R.id.set_list);
         myAdapter = new MyAdapter(this);
         listView.setAdapter(myAdapter);
+
+        exit = (Button) findViewById(R.id.exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"退出成功",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity_setting_page.this,activity_login_page.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public int index = 0;

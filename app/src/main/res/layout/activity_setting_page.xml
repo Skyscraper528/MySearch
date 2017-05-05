@@ -69,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_alignParentBottom="true"
+        android:id="@+id/exit"
         android:background="#21b2fa"
         android:text="退出当前账户"
         android:textSize="18sp"

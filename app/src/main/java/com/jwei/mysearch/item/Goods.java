@@ -13,6 +13,7 @@ public class Goods extends BmobObject{
     public String Price;
     public String Distance;
     public String sImage;
+    public int Hot=0;
 
     public int getHot() {
 
@@ -43,35 +44,35 @@ public class Goods extends BmobObject{
     }
 
 
-    public String Goods_name() {
+    public String getGoods_name() {
         return Goods_name;
     }
     public void setGoods_name(String Goods_name) {
         this.Goods_name = Goods_name;
     }
 
-    public String Store_name() {
+    public String getStore_name() {
         return Store_name;
     }
     public void setStore_name(String Store_name) {
         this.Store_name = Store_name;
     }
 
-    public String Price() {
+    public String getPrice() {
         return Price;
     }
     public void setPrice(String Price) {
         this.Price = Price;
     }
 
-    public String Distance() {
+    public String getDistance() {
         return Distance;
     }
     public void setDistance(String Distance) {
         this.Distance = Distance;
     }
 
-    public String Goods_imageid() {
+    public String getGoods_imageid() {
         return sImage;
     }
     public void setGoods_imageid(String Goods_imageid) {

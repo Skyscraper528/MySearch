@@ -13,13 +13,13 @@ public class GoodsHistory extends BmobObject {
     public String goodsstorefootprint;
     public String username;
 
-    public GoodsHistory(String username,String Goods_name,String Store_name,String Price,String sImage){
-        this.username = username;
-        this.goodsnamefootprint = Goods_name;
-        this.goodsstorefootprint = Store_name;
-        this.goodspricefootprint = Price;
-        this.goodsimagefootprint=sImage;
-    }
+//    public GoodsHistory(String username,String Goods_name,String Store_name,String Price,String sImage){
+//        this.username = username;
+//        this.goodsnamefootprint = Goods_name;
+//        this.goodsstorefootprint = Store_name;
+//        this.goodspricefootprint = Price;
+//        this.goodsimagefootprint=sImage;
+//    }
 
     public String getGoodsimagefootprint() {
         return goodsimagefootprint;

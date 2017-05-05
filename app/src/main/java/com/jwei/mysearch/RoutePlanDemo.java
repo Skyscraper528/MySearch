@@ -1,6 +1,7 @@
 package com.jwei.mysearch;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -85,6 +87,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_navigation_page);
         CharSequence titleLable = "路线规划功能";
         setTitle(titleLable);
@@ -94,6 +97,10 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
         // 处理搜索按钮响应
         editSt = (EditText) findViewById(R.id.start);
         editEn = (EditText) findViewById(R.id.end);
+
+        Intent intent = this.getIntent();
+        String addr = intent.getStringExtra("addr");
+        editEn.setText(addr);
 
         initlocal();
 
@@ -497,6 +504,7 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
             }
 
             editSt.setText(location.getStreet());
+
             MyLocationData locData = new MyLocationData.Builder()
                     .accuracy(location.getRadius())
                     // 此处设置开发者获取到的方向信息，顺时针0-360
