@@ -13,6 +13,8 @@ public class MyUser extends BmobUser {
     private Integer age;
     private String tel;
     private BmobFile image;
+    private  String sEmail;
+    private String selfintroduce;
 
     public String getsEmail() {
         return sEmail;
@@ -38,8 +40,6 @@ public class MyUser extends BmobUser {
         return image;
     }
 
-    private  String sEmail;
-    private String selfintroduce;
 
     public String getTel() {
         return tel;
@@ -49,25 +49,6 @@ public class MyUser extends BmobUser {
         this.tel = tel;
     }
 
-    public String getEmailaddr() {
-        return Emailaddr;
-    }
-
-    public void setEmailaddr(String emailaddr) {
-        Emailaddr = emailaddr;
-    }
-
-    public String getSlefintroduce() {
-        return slefintroduce;
-    }
-
-    public void setSlefintroduce(String slefintroduce) {
-        this.slefintroduce = slefintroduce;
-    }
-
-    private String Emailaddr;
-    private String slefintroduce;
-//    private String Country;
 
     public String getSex() {
         return this.sex;
@@ -92,17 +73,6 @@ public class MyUser extends BmobUser {
     public void setAge(Integer age) {
         this.age = age;
     }
-//    public void setSex(String sex) {
-//        this.sex = sex;
-//    }
-
-//    public String getCountry() {
-//        return Country;
-//    }
-
-//    public void setCountry(String country) {
-//        Country = country;
-//    }
 
 
 }

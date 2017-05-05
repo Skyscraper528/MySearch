@@ -26,15 +26,16 @@ import android.widget.Toast;
 import com.jwei.mysearch.item.MyUser;
 import com.jwei.mysearch.item.Profile;
 import com.jwei.mysearch.other.RenderScriptGaussianBlur;
-import com.jwei.mysearch.other.Utils;
 
 import java.io.File;
 import java.util.Calendar;
 import java.util.Vector;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 public class activity_profile_page extends AppCompatActivity{
@@ -264,7 +265,20 @@ public class activity_profile_page extends AppCompatActivity{
 //                .valueOf(System.currentTimeMillis()));
 
         final BmobFile file=new BmobFile(new File(tempFile.getPath()));
+
+        MyUser user = BmobUser.getCurrentUser(MyUser.class);
+//        user.setValue("nick","傻逼");
+//        user.setValue("image",file);
         user.setImage(file);
+        user.setNick("傻逼");
+        user.setsEmail("嗷嗷嗷");
+        user.update(user.getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                Toast.makeText(activity_profile_page.this,"啦啦啦啦",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         file.uploadblock(new UploadFileListener() {
             @Override
             public void done(BmobException e) {
