@@ -69,11 +69,11 @@ public class MyUser extends BmobUser {
     private String slefintroduce;
 //    private String Country;
 
-    public boolean getSex() {
+    public String getSex() {
         return this.sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -92,9 +92,9 @@ public class MyUser extends BmobUser {
     public void setAge(Integer age) {
         this.age = age;
     }
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
+//    public void setSex(String sex) {
+//        this.sex = sex;
+//    }
 
 //    public String getCountry() {
 //        return Country;
