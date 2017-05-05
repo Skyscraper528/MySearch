@@ -29,6 +29,12 @@ import com.jwei.mysearch.other.RenderScriptGaussianBlur;
 import com.jwei.mysearch.other.Utils;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -62,6 +68,7 @@ public class activity_profile_page extends AppCompatActivity{
     File tempFile;
     File temp;
     TextView username;
+    public MyUser myUser_ = BmobUser.getCurrentUser(MyUser.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +76,8 @@ public class activity_profile_page extends AppCompatActivity{
         Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
         setContentView(R.layout.activity_profile_page);
         imageView = (ImageView) findViewById(R.id.profile_personal_icon_blur);
-        iv_personal_icon = (ImageView) findViewById(R.id.profile_personal_icon);
 
+        iv_personal_icon = (ImageView) findViewById(R.id.profile_personal_icon);
         iv_personal_icon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -78,11 +85,15 @@ public class activity_profile_page extends AppCompatActivity{
                 showChoosePicDialog();
             }
         });
-        blur = new RenderScriptGaussianBlur(activity_profile_page
-                .this);
+        blur = new RenderScriptGaussianBlur(activity_profile_page.this);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.example3);
         bitmap = blur.big(bitmap);
         imageView.setImageBitmap(blur.gaussianBlur(20,bitmap));
+//        String s = myUser_.getImage().getUrl();
+//        s = "http://file.bmob.cn/" + s;
+//        Bitmap personal_icon = doInBackground(s);
+//        iv_personal_icon.setImageBitmap(personal_icon);
+//        imageView.setImageBitmap(blur.gaussianBlur(20,personal_icon));
 
         profile_back = (Button) findViewById(R.id.profile_back);
         profile_back.setOnClickListener(new View.OnClickListener() {
@@ -113,16 +124,14 @@ public class activity_profile_page extends AppCompatActivity{
 //                startActivity(intent);
 //            }
 //        });
-
         listView1 = (ListView) findViewById(R.id.profile_list);
+        listView2 = (ListView) findViewById(R.id.profile_list2);
+        listView3 = (ListView) findViewById(R.id.profile_list3);
+
         myAdapter1 = new MyAdapter1(this);
         listView1.setAdapter(myAdapter1);
-
-        listView2 = (ListView) findViewById(R.id.profile_list2);
         myAdapter2 = new MyAdapter2(this);
         listView2.setAdapter(myAdapter2);
-
-        listView3 = (ListView) findViewById(R.id.profile_list3);
         myAdapter3 = new MyAdapter3(this);
         listView3.setAdapter(myAdapter3);
 
@@ -296,14 +305,15 @@ public class activity_profile_page extends AppCompatActivity{
 
     }
 
+
     public String[] info1={
             "性别",
             "年龄"
     };
 
     public String[] info1_content={
-            "男",
-            "23"
+            myUser_.getSex(),
+            String.valueOf(myUser_.getAge())
     };
 
     public String[] info2={
@@ -312,8 +322,8 @@ public class activity_profile_page extends AppCompatActivity{
     };
 
     public String[] info2_content={
-            "18057894279",
-            "651903069@qq.com"
+            myUser_.getTel(),
+            myUser_.getsEmail()
     };
 
     public String[] info3={
@@ -321,7 +331,7 @@ public class activity_profile_page extends AppCompatActivity{
     };
 
     public String[] info3_content={
-            "介绍一下自己吧"
+            myUser_.getSelfintroduce()
     };
 
     class MyAdapter1 extends BaseAdapter {

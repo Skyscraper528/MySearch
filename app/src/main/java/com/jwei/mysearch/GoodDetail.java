@@ -94,6 +94,16 @@ public class GoodDetail extends AppCompatActivity {
             goodsname.setText(goods_name);
             storename.setText(store_name);
             goodsprice.setText(goods_price);
+        } else if (id ==3){
+            String goods_name = intent.getStringExtra("goodsname");
+            final String store_name = intent.getStringExtra("storename");
+            String goods_price = intent.getStringExtra("goodsprice");
+            Bitmap goods_image=intent.getParcelableExtra("image");
+
+            goodsimage.setImageBitmap(goods_image);
+            goodsname.setText(goods_name);
+            storename.setText(store_name);
+            goodsprice.setText(goods_price);
         }
 
         storename.setOnClickListener(new View.OnClickListener() {

@@ -45,6 +45,7 @@ public class activity_profile_edit extends AppCompatActivity implements DatePick
         Email=(EditText) findViewById(R.id.mailbox_edit);
         self=(EditText) findViewById(R.id.sig_edit);
         profile_edit_done=(Button) findViewById(R.id.profile_edit_done);
+        profile_edit_done=(Button) findViewById(R.id.profile_edit_done);
         profile_edit_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +73,7 @@ public class activity_profile_edit extends AppCompatActivity implements DatePick
             }
 
         });
+
 
         profile_edit_back = (Button) findViewById(R.id.profile_edit_back);
         profile_edit_back.setOnClickListener(new View.OnClickListener() {

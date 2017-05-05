@@ -7,16 +7,16 @@
     android:background="@android:color/transparent">
 
     <ImageView
-        android:layout_width="100sp"
-        android:layout_height="99sp"
+        android:layout_width="90sp"
+        android:layout_height="89sp"
         android:layout_gravity="center"
         android:id="@+id/store_imageview"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/example2"/>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="100sp"
+        android:layout_height="90sp"
         android:layout_weight="1.0"
         android:layout_gravity="center"
         android:orientation="vertical"
@@ -24,51 +24,32 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
                 android:layout_gravity="center"
+                android:gravity="center|left"
                 android:paddingRight="10sp"
-                android:layout_marginTop="10sp"
                 android:layout_marginBottom="5sp"
                 android:id="@+id/collect_store_name"
+                android:drawableLeft="@mipmap/shop"
                 android:text="xixixi"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 />
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_height="0dp"
+                android:layout_weight="1.0"
+                android:layout_gravity="top"
+                android:gravity="center|left"
                 android:paddingRight="10sp"
+                android:drawableLeft="@mipmap/distance"
+                android:paddingBottom="10sp"
                 android:id="@+id/collect_store_distance"
                 android:text="aoaoao"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1.0"
-            android:orientation="horizontal"
-            >
-            <Button
-                android:layout_width="40sp"
-                android:layout_height="25sp"
-                android:layout_gravity="center"
-                android:layout_marginRight="20sp"
-                android:background="@drawable/shape"
-                android:text="进店"
-                android:textSize="12sp"
-                />
-
-            <Button
-                android:layout_width="40sp"
-                android:layout_height="25sp"
-                android:layout_gravity="center"
-                android:background="@drawable/shape"
-                android:text="导航"
-                android:textSize="12sp"/>
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

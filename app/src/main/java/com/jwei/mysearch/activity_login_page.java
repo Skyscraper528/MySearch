@@ -42,7 +42,14 @@ public class activity_login_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         Login=(Button) findViewById(R.id.Login1);
+        BmobUser bmobUser=BmobUser.getCurrentUser();
+        if(bmobUser!=null){
+            Intent intent=new Intent(activity_login_page.this,MainPages.class);
+            startActivity(intent);
+        }else{
+        }
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
