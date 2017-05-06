@@ -1,6 +1,7 @@
 package com.jwei.mysearch.item;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by Administrator on 2017/3/28.
@@ -9,7 +10,8 @@ import cn.bmob.v3.BmobObject;
 public class Store extends BmobObject{
     public String Store_name;
     public String Distance;
-    public String Store_imageid;
+    public BmobFile Store_imageid;
+    public String self_introduce;
 
     public String getSelf_introduce() {
         return self_introduce;
@@ -19,7 +21,7 @@ public class Store extends BmobObject{
         this.self_introduce = self_introduce;
     }
 
-    public String self_introduce;
+
 
     public String Store_name() {
         return Store_name;
@@ -35,11 +37,11 @@ public class Store extends BmobObject{
         this.Distance = Distance;
     }
 
-    public String Store_imageid() {
+    public BmobFile Store_imageid() {
         return Store_imageid;
     }
 
-    public void setStore_imageid(String Store_imageid) {
+    public void setStore_imageid(BmobFile Store_imageid) {
         this.Store_imageid = Store_imageid;
     }
 }

@@ -23,20 +23,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jwei.mysearch.item.MyUser;
 import com.jwei.mysearch.item.Profile;
 import com.jwei.mysearch.other.RenderScriptGaussianBlur;
-import com.jwei.mysearch.other.Utils;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -66,10 +57,10 @@ public class activity_profile_page extends AppCompatActivity{
     protected static Uri tempUri;
     private ImageView iv_personal_icon;
     public Bitmap icon1;
+    public MyUser myUser_ = BmobUser.getCurrentUser(MyUser.class);
     File tempFile;
     File temp;
     TextView username;
-    public MyUser myUser_ = BmobUser.getCurrentUser(MyUser.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +68,8 @@ public class activity_profile_page extends AppCompatActivity{
         Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
         setContentView(R.layout.activity_profile_page);
         imageView = (ImageView) findViewById(R.id.profile_personal_icon_blur);
-
         iv_personal_icon = (ImageView) findViewById(R.id.profile_personal_icon);
+
         iv_personal_icon.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -86,15 +77,11 @@ public class activity_profile_page extends AppCompatActivity{
                 showChoosePicDialog();
             }
         });
-        blur = new RenderScriptGaussianBlur(activity_profile_page.this);
+        blur = new RenderScriptGaussianBlur(activity_profile_page
+                .this);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.example3);
         bitmap = blur.big(bitmap);
         imageView.setImageBitmap(blur.gaussianBlur(20,bitmap));
-//        String s = myUser_.getImage().getUrl();
-//        s = "http://file.bmob.cn/" + s;
-//        Bitmap personal_icon = doInBackground(s);
-//        iv_personal_icon.setImageBitmap(personal_icon);
-//        imageView.setImageBitmap(blur.gaussianBlur(20,personal_icon));
 
         profile_back = (Button) findViewById(R.id.profile_back);
         profile_back.setOnClickListener(new View.OnClickListener() {
@@ -125,14 +112,16 @@ public class activity_profile_page extends AppCompatActivity{
 //                startActivity(intent);
 //            }
 //        });
-        listView1 = (ListView) findViewById(R.id.profile_list);
-        listView2 = (ListView) findViewById(R.id.profile_list2);
-        listView3 = (ListView) findViewById(R.id.profile_list3);
 
+        listView1 = (ListView) findViewById(R.id.profile_list);
         myAdapter1 = new MyAdapter1(this);
         listView1.setAdapter(myAdapter1);
+
+        listView2 = (ListView) findViewById(R.id.profile_list2);
         myAdapter2 = new MyAdapter2(this);
         listView2.setAdapter(myAdapter2);
+
+        listView3 = (ListView) findViewById(R.id.profile_list3);
         myAdapter3 = new MyAdapter3(this);
         listView3.setAdapter(myAdapter3);
 
@@ -266,7 +255,14 @@ public class activity_profile_page extends AppCompatActivity{
     }
 
     private void uploadPic(Bitmap bitmap) {
+        // 上传至服务器
+        // ... 可以在这里把Bitmap转换成file，然后得到file的url，做文件上传操作
+        // 注意这里得到的图片已经是圆形图片了
+        // bitmap是没有做个圆形处理的，但已经被裁剪了
 
+//        String imagePath = Utils.savePhoto(bitmap, Environment
+//                .getExternalStorageDirectory().getAbsolutePath(), String
+//                .valueOf(System.currentTimeMillis()));
 
         final BmobFile file=new BmobFile(new File(tempFile.getPath()));
         file.upload(new UploadFileListener() {
@@ -276,7 +272,7 @@ public class activity_profile_page extends AppCompatActivity{
                     MyUser myuser = BmobUser.getCurrentUser(MyUser.class);
                     myuser.setImage(file);
                     myuser.setSelfintroduce("宝宝想死");
-                    myuser.setNick("苏涵傻逼");
+                    myuser.setNick("傻逼");
                     myuser.update(new UpdateListener() {
                         @Override
                         public void done(BmobException e) {
@@ -293,19 +289,12 @@ public class activity_profile_page extends AppCompatActivity{
             }
         });
 
-//        file.uploadblock(new UploadFileListener() {
-//            @Override
-//            public void done(BmobException e) {
-//                if(e==null){
-//                    Toast.makeText(getApplicationContext(),"头像上传成功",Toast.LENGTH_LONG).show();
-//                }else{
-//                    Toast.makeText(getApplicationContext(),"设置失败",Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-
+//        Log.e("imagePath", tempFile.getPath()+"");
+//        if(imagePath != null){
+//            // 拿着imagePath上传了
+////            // ...
+//        }
     }
-
 
     public String[] info1={
             "性别",
@@ -313,7 +302,7 @@ public class activity_profile_page extends AppCompatActivity{
     };
 
     public String[] info1_content={
-            myUser_.getSex(),
+           myUser_.getSex(),
             String.valueOf(myUser_.getAge())
     };
 

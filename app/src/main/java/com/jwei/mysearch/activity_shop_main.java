@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jwei.mysearch.item.Goods;
 import com.jwei.mysearch.item.Shop;
+import com.jwei.mysearch.item.Store;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +26,9 @@ import java.util.List;
 import java.util.Map;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by sh on 2017/5/3.
@@ -42,11 +47,26 @@ public class activity_shop_main extends Activity {
         super.onCreate(savedInstanceState);
         Bmob.initialize(this, "c3691faf8b85561c7d207be91a25b9e4");
         setContentView(R.layout.activity_shop_main);
-
         shopname = (TextView) findViewById(R.id.shopname);
         Intent intent = this.getIntent();
         String shop_name = intent.getStringExtra("storename");
         shopname.setText(shop_name);
+        mImage=(ImageView) findViewById(R.id.Shop_photo);
+        BmobQuery<Store> mshop = new BmobQuery<Store>();
+        mshop.addWhereEqualTo("sname", shop_name);
+        mshop.findObjects(new FindListener<Store>() {
+            @Override
+            public void done(List<Store> list, BmobException e) {
+                if (e == null) {
+                    for(Store shop:list)
+
+//                        mImage.setImageResource();
+                    Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         ListView lv=(ListView) findViewById(R.id.goodsview01);
         //生成动态数组，加入数据

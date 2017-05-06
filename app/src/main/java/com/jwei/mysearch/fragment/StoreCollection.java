@@ -14,24 +14,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jwei.mysearch.R;
-import com.jwei.mysearch.item.MyUser;
 import com.jwei.mysearch.item.Store;
-import com.jwei.mysearch.item.StoreCollect;
 
-import java.util.List;
 import java.util.Vector;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 public class StoreCollection extends Fragment implements AbsListView.OnScrollListener {
     ListView listView;
-    public Vector<StoreCollect> store = new Vector<>();
+    public Vector<Store> store = new Vector<>();
     public MyAdapter myAdapter;
     public static final int loading=0x1;
-    public MyUser my = BmobUser.getCurrentUser(MyUser.class);
 
     public static StoreCollection newInstance(String text){
         Bundle bundle = new Bundle();
@@ -47,29 +38,51 @@ public class StoreCollection extends Fragment implements AbsListView.OnScrollLis
         listView = (ListView) view.findViewById(R.id.store_collect_list);
         listView.setOnScrollListener(this);
         initData();
-
+        myAdapter = new MyAdapter(getActivity());
+        listView.setAdapter(myAdapter);
         return view;
     }
 
+    public int index = 0;
+    /*
+    * 初始化数据
+    * */
+
+    public String[] Store_name={
+            "万嘉超市",
+            "新华书店",
+            "永辉超市",
+            "沃尔玛",
+            "pull and bear 旗舰店",
+            "苏宁电器"
+    };
+
+    public String[] Distance={
+            "2.6km",
+            "4.8km",
+            "4.5km",
+            "1.5km",
+            "6.5km",
+            "3.3km"
+    };
+
+    public String[] images={String.valueOf(R.mipmap.store1),
+            String.valueOf(R.mipmap.store2),
+            String.valueOf(R.mipmap.store3),
+            String.valueOf(R.mipmap.store4),
+            String.valueOf(R.mipmap.store5),
+            String.valueOf(R.mipmap.store6)
+    };
+
     public void initData(){
-        BmobQuery<StoreCollect> sc = new BmobQuery<StoreCollect>();
-        sc.findObjects(new FindListener<StoreCollect>() {
-            @Override
-            public void done(List<StoreCollect> list, BmobException e) {
-                if(e==null){
-                    for(int i=0;i<list.size();i++){
-                        if(list.get(i).getUsername().equals(my.getUsername())){
-                            StoreCollect sc2 = new StoreCollect();
-                            sc2.setCollect_store_name(list.get(i).collect_store_name);
-                            sc2.setStore_distance(list.get(i).store_distance);
-                            store.add(sc2);
-                        }
-                    }
-                    myAdapter = new MyAdapter(getActivity());
-                    listView.setAdapter(myAdapter);
-                }
-            }
-        });
+        for(int i=0;i < 10&&index<Store_name.length;i++){
+            Store s = new Store();
+            s.Store_name = Store_name[index];
+            s.Distance = Distance[index];
+            //s.Store_imageid = images[index];
+            ++index;
+            store.add(s);
+        }
     }
 
     private int visibleLastIndex;
@@ -137,6 +150,8 @@ public class StoreCollection extends Fragment implements AbsListView.OnScrollLis
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder vh;
+
+
             if(view == null) {
                 LayoutInflater inflater = LayoutInflater.from(this.context);
                 //实例化一个布局
@@ -149,13 +164,13 @@ public class StoreCollection extends Fragment implements AbsListView.OnScrollLis
             } else {
                 vh = (ViewHolder) view.getTag();
             }
-            StoreCollect g = store.get(i);
-
+            Store g = store.get(i);
+            //int storeimageid = Integer.valueOf(g.Store_imageid).intValue();
 
             //System.out.println("view"+view);
-            vh.t22.setText(g.collect_store_name);
-            vh.t33.setText(g.store_distance);
-            //vh.iv1.setImageResource(storeimageid);
+            vh.t22.setText(g.Store_name);
+            vh.t33.setText(g.Distance);
+           // vh.iv1.setImageResource(storeimageid);
             return view;
         }
 
