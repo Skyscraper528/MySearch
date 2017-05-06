@@ -132,24 +132,10 @@ public class GoodsListPage extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     TextView goodsname = (TextView) view.findViewById(R.id.goods_name);
                     String goods_name = (String) goodsname.getText();
-                    TextView storename = (TextView) view.findViewById(R.id.store_name);
-                    String store_name = (String) storename.getText();
-                    TextView distance = (TextView) view.findViewById(R.id.distance);
-                    String distance_ = (String) distance.getText();
-                    TextView goodsprice = (TextView) view.findViewById(R.id.goods_price);
-                    String goods_price = (String) goodsprice.getText();
-                    ImageView pic = (ImageView) view.findViewById(R.id.imageview2);
-                    Drawable image = pic.getDrawable();
-                    BitmapDrawable bd = (BitmapDrawable) image;
-                    Bitmap bitmap = bd.getBitmap();
 
                     Intent intent=new Intent(GoodsListPage.this,GoodDetail.class);
                     intent.putExtra("id",1);
-                    intent.putExtra("image", bitmap);
                     intent.putExtra("goodsname",goods_name);
-                    intent.putExtra("storename",store_name);
-                    intent.putExtra("distance",distance_);
-                    intent.putExtra("goodsprice",goods_price);
                     startActivity(intent);
                 }
         });

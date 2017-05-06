@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jwei.mysearch.item.MyUser;
 import com.jwei.mysearch.item.Profile;
 import com.jwei.mysearch.other.RenderScriptGaussianBlur;
@@ -64,7 +66,6 @@ public class activity_profile_page extends AppCompatActivity{
     protected static Uri tempUri;
     private ImageView iv_personal_icon;
     public Bitmap icon1;
-    MyUser user = new MyUser();
     File tempFile;
     File temp;
     TextView username;

@@ -192,7 +192,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:gravity="center|left"/>
+                android:gravity="center|left"
+                android:textColor="#807979"/>
 
             <ImageView
                 android:src="@mipmap/map1"

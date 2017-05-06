@@ -99,11 +99,13 @@ public class RoutePlanDemo extends Activity implements BaiduMap.OnMapClickListen
         editEn = (EditText) findViewById(R.id.end);
 
         Intent intent = this.getIntent();
-        String addr = intent.getStringExtra("addr");
-        editEn.setText(addr);
+        int id = intent.getIntExtra("id",0);
+        if (id==1) {
+            String addr = intent.getStringExtra("addr");
+            editEn.setText(addr);
+        }
 
         initlocal();
-
         mBtnPre = (Button) findViewById(R.id.pre);
         mBtnNext = (Button) findViewById(R.id.next);
         mBtnPre.setVisibility(View.INVISIBLE);

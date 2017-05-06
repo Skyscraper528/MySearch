@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.jwei.mysearch.GoodDetail;
 import com.jwei.mysearch.MainSearchPage;
 import com.jwei.mysearch.Mapview;
 import com.jwei.mysearch.R;
@@ -72,6 +74,19 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
         myAdapter = new MyAdapter(getActivity());
         listView.setAdapter(myAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView goodsname = (TextView) view.findViewById(R.id.recommend_goods_name);
+                String goods_name = (String) goodsname.getText();
+
+                Intent intent=new Intent(getActivity(),GoodDetail.class);
+                intent.putExtra("id",4);
+                intent.putExtra("goodsname",goods_name);
+                startActivity(intent);
+            }
+        });
+
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
             return view;
@@ -98,37 +113,21 @@ public class SearchPage extends Fragment implements AbsListView.OnScrollListener
 
     public String[] Goods_name={
             "疯狂Android讲义 李刚疯狂的Android讲义教程从入门到精通",
-            "林宥嘉 大小说家 CD+三张明信片+写真歌词本",
-            "短袖T恤男 经典卡通动物印花圆领TEE",
-            "马可彩铅笔72/48色油性彩铅专业绘画美术填图笔",
-            "威诺时男士高档学生潮流时装表防水手表",
-            "威爵士男女士牛奶滋润洗发水去屑洗发露正品留香牛奶味"
+            "康师傅绿茶"
     };
 
     public String[] Store_name={
             "瑞意图书专营店",
-            "天沐音像专营店",
-            "lifeafterlife旗舰店",
-            "标逸办公专营店",
-            "西子表屋",
-            "创美时尚馆美发护发正品店"
+            "万嘉超市"
     };
 
     public String[] Price={
             "¥88.60",
-            "¥49.00",
-            "¥59.00",
-            "¥72.00",
-            "¥168.00",
-            "¥38.00"
+            "¥3.00"
     };
 
     public int[] images={R.mipmap.goods1,
             R.mipmap.goods2,
-            R.mipmap.goods3,
-            R.mipmap.goods4,
-            R.mipmap.goods5,
-            R.mipmap.goods6
     };
 
     public void initData(){

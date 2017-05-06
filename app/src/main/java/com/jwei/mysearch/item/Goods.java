@@ -13,7 +13,27 @@ public class Goods extends BmobObject{
     public String Store_name;
     public String Price;
     public String Distance;
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String introduction;
     public BmobFile sImage;
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public void setAddr(String addr) {
+        this.addr = addr;
+    }
+
+    public String addr;
     public int Hot=0;
 
     public int getHot() {

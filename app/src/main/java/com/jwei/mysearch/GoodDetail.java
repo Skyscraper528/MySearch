@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.jwei.mysearch.item.Goods;
 import com.jwei.mysearch.item.GoodsCollect;
 import com.jwei.mysearch.item.GoodsHistory;
 
@@ -39,7 +40,9 @@ public class GoodDetail extends AppCompatActivity {
     private TextView distance_;
     private ImageView goodsimage;
     private TextView storeaddr;
+    private TextView introduction;
     private TextView goodscollect_icon;
+    private String goods_name;
 
 
     @Override
@@ -48,63 +51,42 @@ public class GoodDetail extends AppCompatActivity {
         SDKInitializer.initialize(getApplicationContext());
         Bmob.initialize(this, "82c5285224e3318150592e4b40e651ad");
         setContentView(R.layout.activity_gooddetails);
-
         ImageView button_nav =(ImageView)findViewById(R.id.store_navigation);
-        storeaddr = (TextView) findViewById(R.id.store_address);
-        final String addr = storeaddr.getText().toString();
-        button_nav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(GoodDetail.this,RoutePlanDemo.class);
-                intent2.putExtra("addr",addr);
-                startActivity(intent2);
-            }
-        });
 
-
+        final Intent intent = this.getIntent();
+        int id = intent.getIntExtra("id",0);
+        if (id==1) {
+            //    得到跳转到该Activity的Intent对象
+            goods_name = intent.getStringExtra("goodsname");
+        } else if(id ==2){
+            goods_name = intent.getStringExtra("namefootprint");
+        } else if (id ==3){
+            goods_name = intent.getStringExtra("goodsname");
+        } else if (id ==4){
+            goods_name = intent.getStringExtra("goodsname");
+        } else if (id ==5){
+            goods_name = intent.getStringExtra("namefootprint");
+        }
 
         storename = (TextView) findViewById(R.id.store_name3);
         goodsname = (TextView) findViewById(R.id.goods_name1);
         distance_ = (TextView) findViewById(R.id.goods_distance1);
         goodsprice = (TextView) findViewById(R.id.goods_price1);
         goodsimage = (ImageView) findViewById(R.id.goods_image1);
+        storeaddr = (TextView) findViewById(R.id.store_address);
+        introduction = (TextView) findViewById(R.id.goods_desp);
+        initdata(goods_name);
 
-        final Intent intent = this.getIntent();
-        int id = intent.getIntExtra("id",0);
-        if (id==1) {
-            //    得到跳转到该Activity的Intent对象
-            String goods_name = intent.getStringExtra("goodsname");
-            final String store_name = intent.getStringExtra("storename");
-            String distance = intent.getStringExtra("distance");
-            String goods_price = intent.getStringExtra("goodsprice");
-            Bitmap goods_image=intent.getParcelableExtra("image");
-
-            goodsimage.setImageBitmap(goods_image);
-            goodsname.setText(goods_name);
-            storename.setText(store_name);
-            goodsprice.setText(goods_price);
-            distance_.setText(distance);
-        } else if(id ==2){
-            String goods_name = intent.getStringExtra("namefootprint");
-            final String store_name = intent.getStringExtra("storenamefootprint");
-            String goods_price = intent.getStringExtra("pricefootprint");
-            Bitmap goods_image=intent.getParcelableExtra("image1");
-
-            goodsimage.setImageBitmap(goods_image);
-            goodsname.setText(goods_name);
-            storename.setText(store_name);
-            goodsprice.setText(goods_price);
-        } else if (id ==3){
-            String goods_name = intent.getStringExtra("goodsname");
-            final String store_name = intent.getStringExtra("storename");
-            String goods_price = intent.getStringExtra("goodsprice");
-            Bitmap goods_image=intent.getParcelableExtra("image");
-
-            goodsimage.setImageBitmap(goods_image);
-            goodsname.setText(goods_name);
-            storename.setText(store_name);
-            goodsprice.setText(goods_price);
-        }
+        final String addr = storeaddr.getText().toString();
+        button_nav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(GoodDetail.this,RoutePlanDemo.class);
+                intent2.putExtra("id",1);
+                intent2.putExtra("addr",addr);
+                startActivity(intent2);
+            }
+        });
 
         storename.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,7 +152,28 @@ public class GoodDetail extends AppCompatActivity {
 
     }
 
+    public void initdata(final String name){
 
+        BmobQuery<Goods> sc = new BmobQuery<Goods>();
+        sc.findObjects(new FindListener<Goods>() {
+            @Override
+            public void done(List<Goods> list, BmobException e) {
+                if(e==null){
+                    for(int i=0;i<list.size();i++){
+                        if(list.get(i).getGoods_name().equals(name)){
+                            goodsname.setText(list.get(i).getGoods_name());
+                            storename.setText(list.get(i).getStore_name());
+                            distance_.setText(list.get(i).getDistance());
+                            goodsprice.setText(list.get(i).getPrice());
+                            storeaddr.setText(list.get(i).getAddr());
+                            introduction.setText(list.get(i).getIntroduction());
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    }
 
 
 }

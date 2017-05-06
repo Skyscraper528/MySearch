@@ -18,17 +18,24 @@ import android.widget.TextView;
 import com.jwei.mysearch.adapter.AbstractListAdapter;
 import com.jwei.mysearch.item.FootprintTime;
 import com.jwei.mysearch.item.Goods;
+import com.jwei.mysearch.item.GoodsHistory;
+import com.jwei.mysearch.item.MyUser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 public class activity_footprint_page extends AppCompatActivity {
 
     private ListView mListview;
     private MultiStyleListAdapter mAdapter;
     Button back;
+    public MyUser my = BmobUser.getCurrentUser(MyUser.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +53,10 @@ public class activity_footprint_page extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TextView goodsnamefootprint = (TextView) view.findViewById(R.id.collect_goods_name);
                 String goods_name_footprint = (String) goodsnamefootprint.getText();
-                TextView storenamefootprint = (TextView) view.findViewById(R.id.store_name1);
-                String store_name_footprint = (String) storenamefootprint.getText();
-                TextView goodspricefootprint = (TextView) view.findViewById(R.id.collection_goods_price);
-                String goods_price_footprint = (String) goodspricefootprint.getText();
-                ImageView pic = (ImageView) view.findViewById(R.id.collect_goods_imageview);
-                Drawable image = pic.getDrawable();
-                BitmapDrawable bd = (BitmapDrawable) image;
-                Bitmap bitmap = bd.getBitmap();
 
                 Intent intent=new Intent(activity_footprint_page.this,GoodDetail.class);
-                intent.putExtra("id",2);
-                intent.setAction("gooddetail");
-                intent.putExtra("image1", bitmap);
-                intent.putExtra("namefootprint",goods_name_footprint); // 第一个参数指定name，android规范是以包名+变量名来命名，后面是各种类型的数据类型
-                intent.putExtra("storenamefootprint",store_name_footprint);
-                intent.putExtra("pricefootprint",goods_price_footprint);
+                intent.putExtra("id",5);
+                intent.putExtra("namefootprint",goods_name_footprint);
                 startActivity(intent);
             }
         });
@@ -79,7 +74,7 @@ public class activity_footprint_page extends AppCompatActivity {
     }
 
     private void createData(){
-        List<Object> dataAll=new ArrayList<>();
+        final List<Object> dataAll=new ArrayList<>();
 //        dataAll.add(new FootprintTime("一个星期内"));
 //        dataAll.add(new Goods("疯狂Android讲义 李刚疯狂的Android讲义教程从入门到精通","瑞意图书专营店","¥88.60",String.valueOf(R.mipmap.goods1)));
 //        dataAll.add(new Goods("林宥嘉 大小说家 CD+三张明信片+写真歌词本","天沐音像专营店","¥49.00",String.valueOf(R.mipmap.goods2)));
@@ -88,8 +83,26 @@ public class activity_footprint_page extends AppCompatActivity {
 //        dataAll.add(new Goods("马可彩铅笔72/48色油性彩铅专业绘画美术填图笔","标逸办公专营店","¥72.00",String.valueOf(R.mipmap.goods4)));
 //        dataAll.add(new Goods("威诺时男士高档学生潮流时装表防水手表","西子表屋","¥168.00",String.valueOf(R.mipmap.goods5)));
 //        dataAll.add(new Goods("威爵士男女士牛奶滋润洗发水去屑洗发露正品留香牛奶味","创美时尚馆美发护发正品店","¥38.00",String.valueOf(R.mipmap.goods6)));
-        mAdapter.setList(dataAll);
-        mAdapter.notifyDataSetChanged();
+        BmobQuery<GoodsHistory> sc = new BmobQuery<GoodsHistory>();
+        sc.findObjects(new FindListener<GoodsHistory>() {
+            @Override
+            public void done(List<GoodsHistory> list, BmobException e) {
+                if(e==null){
+                    for(int i=0;i<list.size();i++){
+                        if(list.get(i).getUsername().equals(my.getUsername())){
+                            GoodsHistory gh2 = new GoodsHistory();
+                            gh2.setGoodsnamefootprint(list.get(i).goodsnamefootprint);
+                            gh2.setGoodsstorefootprint(list.get(i).goodsstorefootprint);
+                            gh2.setGoodspricefootprint(list.get(i).goodspricefootprint);
+                            dataAll.add(gh2);
+                        }
+                    }
+                    mAdapter.setList(dataAll);
+                    mAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
     }
 
 
